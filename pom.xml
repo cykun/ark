@@ -73,6 +73,11 @@
                 <version>2.18.0</version>
             </dependency>
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>6.1.14</version>
+            </dependency>
+            <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-handler</artifactId>
                 <version>4.1.114.Final</version>
@@ -80,6 +85,11 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-common</artifactId>
+                <version>4.1.114.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
                 <version>4.1.114.Final</version>
             </dependency>
             <dependency>
@@ -96,6 +106,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.34</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>13.0</version>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
