@@ -2,9 +2,9 @@ package ink.xikun.ark.consumer;
 
 import ink.xikun.ark.codec.ArkRpcDecoder;
 import ink.xikun.ark.codec.ArkRpcEncoder;
-import ink.xikun.ark.core.RpcRequest;
-import ink.xikun.ark.core.RpcServiceHelper;
-import ink.xikun.ark.core.ServiceMeta;
+import ink.xikun.ark.common.RpcRequest;
+import ink.xikun.ark.common.RpcServiceHelper;
+import ink.xikun.ark.common.ServiceMeta;
 import ink.xikun.ark.handler.RpcResponseHandler;
 import ink.xikun.ark.protocol.RpcProtocol;
 import ink.xikun.ark.registry.RegistryService;

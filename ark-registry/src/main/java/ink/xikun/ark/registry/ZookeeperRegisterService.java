@@ -1,7 +1,7 @@
 package ink.xikun.ark.registry;
 
-import ink.xikun.ark.core.RpcServiceHelper;
-import ink.xikun.ark.core.ServiceMeta;
+import ink.xikun.ark.common.RpcServiceHelper;
+import ink.xikun.ark.common.ServiceMeta;
 import ink.xikun.ark.registry.loadbalancer.ZKConsistentHashLoadBalancer;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

@@ -1,9 +1,9 @@
 package ink.xikun.ark.consumer;
 
-import ink.xikun.ark.core.RpcFuture;
-import ink.xikun.ark.core.RpcRequest;
-import ink.xikun.ark.core.RpcRequestHolder;
-import ink.xikun.ark.core.RpcResponse;
+import ink.xikun.ark.common.RpcFuture;
+import ink.xikun.ark.common.RpcRequest;
+import ink.xikun.ark.common.RpcRequestHolder;
+import ink.xikun.ark.common.RpcResponse;
 import ink.xikun.ark.protocol.*;
 import ink.xikun.ark.registry.RegistryService;
 import ink.xikun.ark.serialization.SerializationTypeEnum;
@@ -35,7 +35,7 @@ public class RpcInvokerProxy implements InvocationHandler {
         long requestId = RpcRequestHolder.REQUEST_ID_GEN.incrementAndGet();
         header.setMagic(ProtocolConstants.MAGIC);
         header.setVersion(ProtocolConstants.VERSION);
-        header.setSerialization((byte) SerializationTypeEnum.HESSIAN.getType());
+        header.setSerialization((byte) SerializationTypeEnum.hessian.getType());
         header.setMsgType((byte) MsgType.REQUEST.getType());
         header.setStatus((byte) 0x1);
         header.setRequestId(requestId);

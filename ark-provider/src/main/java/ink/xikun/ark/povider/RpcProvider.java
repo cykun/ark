@@ -2,8 +2,8 @@ package ink.xikun.ark.povider;
 
 import ink.xikun.ark.codec.ArkRpcDecoder;
 import ink.xikun.ark.codec.ArkRpcEncoder;
-import ink.xikun.ark.core.RpcServiceHelper;
-import ink.xikun.ark.core.ServiceMeta;
+import ink.xikun.ark.common.RpcServiceHelper;
+import ink.xikun.ark.common.ServiceMeta;
 import ink.xikun.ark.handler.RpcRequestHandler;
 import ink.xikun.ark.povider.annotation.RpcService;
 import ink.xikun.ark.registry.RegistryService;

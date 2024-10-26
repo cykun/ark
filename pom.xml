@@ -18,10 +18,13 @@
     <modules>
         <module>ark-registry</module>
         <module>ark-protocol</module>
-        <module>ark-core</module>
+        <module>ark-common</module>
         <module>ark-provider</module>
         <module>ark-consumer</module>
         <module>example</module>
+        <module>ark-serialization</module>
+        <module>ark-serialization/ark-serialization-jackson</module>
+        <module>ark-serialization/ark-serialization-kryo</module>
     </modules>
     <scm>
         <connection/>
@@ -73,6 +76,11 @@
                 <version>2.18.0</version>
             </dependency>
             <dependency>
+                <groupId>com.esotericsoftware</groupId>
+                <artifactId>kryo</artifactId>
+                <version>5.6.2</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>6.1.14</version>
@@ -91,6 +99,11 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>4.1.114.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.17.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>

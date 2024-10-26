@@ -1,6 +1,6 @@
 package ink.xikun.ark.registry;
 
-import ink.xikun.ark.core.ServiceMeta;
+import ink.xikun.ark.common.ServiceMeta;
 
 import java.io.IOException;
 

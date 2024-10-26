@@ -42,6 +42,12 @@
             <artifactId>annotations</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>ink.xikun</groupId>
+            <artifactId>ark-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
 </project>

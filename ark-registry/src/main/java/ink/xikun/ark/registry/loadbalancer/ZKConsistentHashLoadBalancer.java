@@ -1,6 +1,6 @@
 package ink.xikun.ark.registry.loadbalancer;
 
-import ink.xikun.ark.core.ServiceMeta;
+import ink.xikun.ark.common.ServiceMeta;
 import org.apache.curator.x.discovery.ServiceInstance;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package ink.xikun.ark.codec;
 
+import ink.xikun.ark.common.serialize.Serialization;
 import ink.xikun.ark.protocol.MsgHeader;
 import ink.xikun.ark.protocol.RpcProtocol;
-import ink.xikun.ark.serialization.RpcSerialization;
 import ink.xikun.ark.serialization.SerializationFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -20,7 +20,7 @@ public class ArkRpcEncoder extends MessageToByteEncoder<RpcProtocol<Object>> {
     +---------------------------------------------------------------+
     */
     @Override
-    protected void encode(ChannelHandlerContext channelHandlerContext, RpcProtocol<Object> objectRpcProtocol, ByteBuf byteBuf) throws Exception {
+    protected void encode(ChannelHandlerContext channelHandlerContext, RpcProtocol<Object> objectRpcProtocol, ByteBuf byteBuf) {
         MsgHeader header = objectRpcProtocol.getHeader();
         byteBuf.writeShort(header.getMagic());
         byteBuf.writeByte(header.getVersion());
@@ -28,7 +28,7 @@ public class ArkRpcEncoder extends MessageToByteEncoder<RpcProtocol<Object>> {
         byteBuf.writeByte(header.getMsgType());
         byteBuf.writeByte(header.getStatus());
         byteBuf.writeLong(header.getRequestId());
-        RpcSerialization serialization = SerializationFactory.getRpcSerialization(header.getSerialization());
+        Serialization serialization = SerializationFactory.getRpcSerialization(header.getSerialization());
         byte[] data = serialization.serialize(objectRpcProtocol.getBody());
         byteBuf.writeInt(data.length);
         byteBuf.writeBytes(data);

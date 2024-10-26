@@ -44,7 +44,12 @@
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>
-            <artifactId>ark-core</artifactId>
+            <artifactId>ark-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ink.xikun</groupId>
+            <artifactId>ark-serialization-kryo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>

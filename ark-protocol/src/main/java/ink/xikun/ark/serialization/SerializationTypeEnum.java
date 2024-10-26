@@ -5,8 +5,9 @@ import lombok.Getter;
 @Getter
 public enum SerializationTypeEnum {
 
-    HESSIAN(0x10),
-    JSON(0x20);
+    hessian(0x10),
+    jackson(0x20),
+    kryo(0x30);
 
     private final int type;
 
@@ -20,6 +21,6 @@ public enum SerializationTypeEnum {
                 return typeEnum;
             }
         }
-        return HESSIAN;
+        return hessian;
     }
 }

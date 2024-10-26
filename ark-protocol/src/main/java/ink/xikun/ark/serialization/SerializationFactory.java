@@ -1,13 +1,12 @@
 package ink.xikun.ark.serialization;
 
+import ink.xikun.ark.common.serialize.Serialization;
+import ink.xikun.ark.common.extension.ExtensionLoader;
+
 public final class SerializationFactory {
 
-    public static RpcSerialization getRpcSerialization(byte serializationType) {
+    public static Serialization getRpcSerialization(byte serializationType) {
         SerializationTypeEnum typeEnum = SerializationTypeEnum.findByType(serializationType);
-
-        return switch (typeEnum) {
-            case HESSIAN -> new HessianSerialization();
-            case JSON -> new JsonSerialization();
-        };
+        return ExtensionLoader.getExtension(Serialization.class, typeEnum.name());
     }
 }

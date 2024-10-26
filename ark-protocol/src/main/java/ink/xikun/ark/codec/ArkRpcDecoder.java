@@ -1,12 +1,12 @@
 package ink.xikun.ark.codec;
 
-import ink.xikun.ark.core.RpcRequest;
-import ink.xikun.ark.core.RpcResponse;
+import ink.xikun.ark.common.serialize.Serialization;
+import ink.xikun.ark.common.RpcRequest;
+import ink.xikun.ark.common.RpcResponse;
 import ink.xikun.ark.protocol.MsgHeader;
 import ink.xikun.ark.protocol.MsgType;
 import ink.xikun.ark.protocol.ProtocolConstants;
 import ink.xikun.ark.protocol.RpcProtocol;
-import ink.xikun.ark.serialization.RpcSerialization;
 import ink.xikun.ark.serialization.SerializationFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -64,7 +64,7 @@ public class ArkRpcDecoder extends ByteToMessageDecoder {
         msgHeader.setRequestId(requestId);
         msgHeader.setDataLength(dataLength);
 
-        RpcSerialization rpcSerialization = SerializationFactory.getRpcSerialization(serializationType);
+        Serialization rpcSerialization = SerializationFactory.getRpcSerialization(serializationType);
         switch (msgType) {
             case REQUEST:
                 RpcRequest rpcRequest = rpcSerialization.deserialize(data, RpcRequest.class);
