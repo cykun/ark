@@ -1,6 +1,5 @@
-package ink.xikun.ark.serialization;
+package ink.xikun.ark.common.serialize;
 
-import ink.xikun.ark.common.serialize.Serialization;
 import ink.xikun.ark.common.extension.ExtensionLoader;
 
 public final class SerializationFactory {

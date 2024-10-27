@@ -5,33 +5,35 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ink.xikun</groupId>
-        <artifactId>example</artifactId>
+        <artifactId>ark-registry</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>echo-consumer</artifactId>
+    <artifactId>ark-registry-zookeeper</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.3.4</version>
-        </dependency>
-        <dependency>
             <groupId>ink.xikun</groupId>
-            <artifactId>echo-api</artifactId>
+            <artifactId>ark-registry-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>ink.xikun</groupId>
-            <artifactId>ark-consumer</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-x-discovery</artifactId>
         </dependency>
     </dependencies>
+
 </project>

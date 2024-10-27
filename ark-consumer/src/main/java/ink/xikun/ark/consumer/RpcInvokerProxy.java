@@ -4,9 +4,9 @@ import ink.xikun.ark.common.RpcFuture;
 import ink.xikun.ark.common.RpcRequest;
 import ink.xikun.ark.common.RpcRequestHolder;
 import ink.xikun.ark.common.RpcResponse;
+import ink.xikun.ark.common.serialize.SerializationTypeEnum;
 import ink.xikun.ark.protocol.*;
 import ink.xikun.ark.registry.RegistryService;
-import ink.xikun.ark.serialization.SerializationTypeEnum;
 import io.netty.channel.DefaultEventLoop;
 import io.netty.util.concurrent.DefaultPromise;
 
@@ -35,7 +35,7 @@ public class RpcInvokerProxy implements InvocationHandler {
         long requestId = RpcRequestHolder.REQUEST_ID_GEN.incrementAndGet();
         header.setMagic(ProtocolConstants.MAGIC);
         header.setVersion(ProtocolConstants.VERSION);
-        header.setSerialization((byte) SerializationTypeEnum.hessian.getType());
+        header.setSerialization((byte) SerializationTypeEnum.jackson.getType());
         header.setMsgType((byte) MsgType.REQUEST.getType());
         header.setStatus((byte) 0x1);
         header.setRequestId(requestId);

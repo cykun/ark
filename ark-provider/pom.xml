@@ -27,9 +27,19 @@
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>
-            <artifactId>ark-registry</artifactId>
+            <artifactId>ark-registry-zookeeper</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>ink.xikun</groupId>
+            <artifactId>ark-registry-nacos</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ink.xikun</groupId>
+            <artifactId>ark-serialization-jackson</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>

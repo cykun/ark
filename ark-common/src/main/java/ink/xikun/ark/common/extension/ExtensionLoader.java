@@ -167,18 +167,20 @@ public class ExtensionLoader<T> {
     }
 
     private T createExtension(final String name) {
-        Class<?> aClass = getExtensionClasses().get(name);
-        if (Objects.isNull(aClass)) {
-            throw new IllegalArgumentException("name is error");
+        Class<?> clazz = getExtensionClasses().get(name);
+        if (Objects.isNull(clazz)) {
+            throw
+
+                    new IllegalArgumentException(name + " can not be null");
         }
-        Object o = spiClassInstances.get(aClass);
+        Object o = spiClassInstances.get(clazz);
         if (Objects.isNull(o)) {
             try {
-                spiClassInstances.putIfAbsent(aClass, aClass.getConstructor().newInstance());
-                o = spiClassInstances.get(aClass);
+                spiClassInstances.putIfAbsent(clazz, clazz.getConstructor().newInstance());
+                o = spiClassInstances.get(clazz);
             } catch (Exception e) {
                 throw new IllegalStateException("Extension instance(name: " + name + ", class: "
-                        + aClass + ")  could not be instantiated: " + e.getMessage(), e);
+                        + clazz + ")  could not be instantiated: " + e.getMessage(), e);
 
             }
         }

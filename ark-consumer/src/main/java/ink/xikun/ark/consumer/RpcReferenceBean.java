@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.lang.reflect.Proxy;
+import java.net.URI;
 
 @Setter
 public class RpcReferenceBean implements FactoryBean<Object> {
@@ -13,8 +14,6 @@ public class RpcReferenceBean implements FactoryBean<Object> {
     private Class<?> interfaceClass;
 
     private String serviceVersion;
-
-    private String registryType;
 
     private String registryAddress;
 
@@ -33,7 +32,7 @@ public class RpcReferenceBean implements FactoryBean<Object> {
     }
 
     public void init() throws Exception {
-        RegistryService registryService = RegistryFactory.getInstance(registryAddress);
+        RegistryService registryService = RegistryFactory.getInstance(new URI(registryAddress));
         this.proxy = Proxy.newProxyInstance(
                 Thread.currentThread().getContextClassLoader(),
                 new Class<?>[]{interfaceClass},

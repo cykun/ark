@@ -1,9 +1,9 @@
 package ink.xikun.ark.codec;
 
 import ink.xikun.ark.common.serialize.Serialization;
+import ink.xikun.ark.common.serialize.SerializationFactory;
 import ink.xikun.ark.protocol.MsgHeader;
 import ink.xikun.ark.protocol.RpcProtocol;
-import ink.xikun.ark.serialization.SerializationFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

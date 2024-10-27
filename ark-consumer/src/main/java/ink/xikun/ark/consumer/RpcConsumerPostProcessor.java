@@ -67,7 +67,6 @@ public class RpcConsumerPostProcessor implements ApplicationContextAware, BeanCl
             builder.setInitMethodName("init");
             builder.addPropertyValue("interfaceClass", field.getType());
             builder.addPropertyValue("serviceVersion", annotation.serviceVersion());
-            builder.addPropertyValue("registryType", annotation.registryType());
             builder.addPropertyValue("registryAddress", annotation.registryAddress());
             builder.addPropertyValue("timeout", annotation.timeout());
 

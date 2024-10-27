@@ -65,7 +65,7 @@ public class RpcProvider implements InitializingBean, BeanPostProcessor {
                     }).childOption(ChannelOption.SO_KEEPALIVE, true);
 
             ChannelFuture future = bootstrap.bind(this.serverAddress, serverPort).sync();
-            log.info("server started at port {}", serverPort);
+            log.info("Ark started with port {}", serverPort);
             future.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();

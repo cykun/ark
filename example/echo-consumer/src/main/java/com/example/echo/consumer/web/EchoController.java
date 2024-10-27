@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class EchoController {
 
-    @RpcReference
+    @RpcReference(registryAddress = "nacos://127.0.0.1:8848")
     private EchoService echoService;
 
     @GetMapping("echo")

@@ -28,15 +28,18 @@
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>
-            <artifactId>ark-registry</artifactId>
+            <artifactId>ark-registry-nacos</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ink.xikun</groupId>
+            <artifactId>ark-serialization-jackson</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>
             <artifactId>ark-protocol</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.netty</groupId>
@@ -51,7 +54,6 @@
             <groupId>ink.xikun</groupId>
             <artifactId>ark-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

@@ -3,11 +3,11 @@ package ink.xikun.ark.codec;
 import ink.xikun.ark.common.serialize.Serialization;
 import ink.xikun.ark.common.RpcRequest;
 import ink.xikun.ark.common.RpcResponse;
+import ink.xikun.ark.common.serialize.SerializationFactory;
 import ink.xikun.ark.protocol.MsgHeader;
 import ink.xikun.ark.protocol.MsgType;
 import ink.xikun.ark.protocol.ProtocolConstants;
 import ink.xikun.ark.protocol.RpcProtocol;
-import ink.xikun.ark.serialization.SerializationFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
@@ -26,7 +26,7 @@ public class ArkRpcDecoder extends ByteToMessageDecoder {
     +---------------------------------------------------------------+
     */
     @Override
-    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) throws Exception {
+    protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf, List<Object> list) {
         if (byteBuf.readableBytes() < 16) {
             return;
         }

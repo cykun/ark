@@ -1,1 +1,1 @@
-hessian=ink.xikun.ark.common.serialize.jackson.JacksonSerialization
+jackson=ink.xikun.ark.common.serialize.jackson.JacksonSerialization

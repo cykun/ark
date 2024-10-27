@@ -1,4 +1,4 @@
-package ink.xikun.ark.serialization;
+package ink.xikun.ark.common.serialize;
 
 import lombok.Getter;
 

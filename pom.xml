@@ -23,8 +23,6 @@
         <module>ark-consumer</module>
         <module>example</module>
         <module>ark-serialization</module>
-        <module>ark-serialization/ark-serialization-jackson</module>
-        <module>ark-serialization/ark-serialization-kryo</module>
     </modules>
     <scm>
         <connection/>
