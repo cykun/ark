@@ -51,8 +51,7 @@ public class RpcConsumer {
         Object[] requestParameters = request.getParameters();
         String serviceIdentifier = RpcServiceHelper.buildServiceKey(request.getClassName(), request.getServiceVersion());
 
-        int invocationHashCode = requestParameters.length > 0 ? requestParameters[0].hashCode() : serviceIdentifier.hashCode();
-        ServiceMeta serviceMetadata = registryService.discovery(serviceIdentifier, invocationHashCode);
+        ServiceMeta serviceMetadata = registryService.discovery(serviceIdentifier, request);
 
         if (serviceMetadata != null) {
             InetSocketAddress serviceAddress = new InetSocketAddress(serviceMetadata.getServiceAddress(), serviceMetadata.getServicePort());

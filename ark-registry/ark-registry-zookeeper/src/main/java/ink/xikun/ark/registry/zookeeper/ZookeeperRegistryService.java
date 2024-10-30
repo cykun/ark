@@ -1,9 +1,10 @@
 package ink.xikun.ark.registry.zookeeper;
 
+import ink.xikun.ark.common.RpcRequest;
 import ink.xikun.ark.common.RpcServiceHelper;
 import ink.xikun.ark.common.ServiceMeta;
 import ink.xikun.ark.registry.RegistryService;
-import ink.xikun.ark.registry.loadbalancer.ZKConsistentHashLoadBalancer;
+import ink.xikun.ark.registry.loadbalance.RandomLoadBalancer;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -61,9 +62,9 @@ public class ZookeeperRegistryService implements RegistryService {
     }
 
     @Override
-    public ServiceMeta discovery(String serviceName, int invokerHashCode) throws Exception {
+    public ServiceMeta discovery(String serviceName, RpcRequest request) throws Exception {
         Collection<ServiceInstance<ServiceMeta>> serviceInstances = serviceDiscovery.queryForInstances(serviceName);
-        ServiceInstance<ServiceMeta> instance = new ZKConsistentHashLoadBalancer().select((List<ServiceInstance<ServiceMeta>>) serviceInstances, invokerHashCode);
+        ServiceInstance<ServiceMeta> instance = new RandomLoadBalancer().select((List<ServiceInstance<ServiceMeta>>) serviceInstances, request);
         if (instance != null) {
             return instance.getPayload();
         }

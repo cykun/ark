@@ -3,6 +3,7 @@ package ink.xikun.ark.registry.nacos;
 import com.alibaba.nacos.api.NacosFactory;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import ink.xikun.ark.common.RpcRequest;
 import ink.xikun.ark.common.RpcServiceHelper;
 import ink.xikun.ark.common.ServiceMeta;
 import ink.xikun.ark.registry.RegistryService;
@@ -39,7 +40,7 @@ public class NacosRegistryService implements RegistryService {
     }
 
     @Override
-    public ServiceMeta discovery(String serviceName, int invokerHashCode) throws Exception {
+    public ServiceMeta discovery(String serviceName, RpcRequest request) throws Exception {
         List<Instance> instances = namingService.getAllInstances(serviceName);
         if (instances.isEmpty()) {
             return null;

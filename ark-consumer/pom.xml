@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>ink.xikun</groupId>
-            <artifactId>ark-registry-nacos</artifactId>
+            <artifactId>ark-registry-zookeeper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -54,6 +54,12 @@
             <groupId>ink.xikun</groupId>
             <artifactId>ark-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>3.3.4</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

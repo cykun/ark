@@ -1,5 +1,6 @@
 package ink.xikun.ark.consumer;
 
+import ink.xikun.ark.common.ArkProperties;
 import ink.xikun.ark.consumer.annotation.RpcReference;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -28,6 +29,12 @@ public class RpcConsumerPostProcessor implements ApplicationContextAware, BeanCl
     private ClassLoader classLoader;
 
     private final Map<String, BeanDefinition> rpcRefBeanDefinitions = new LinkedHashMap<>();
+
+    private final ArkProperties arkProperties;
+
+    public RpcConsumerPostProcessor(ArkProperties arkProperties) {
+        this.arkProperties = arkProperties;
+    }
 
     @Override
     public void setApplicationContext(@NotNull ApplicationContext applicationContext) throws BeansException {
@@ -67,7 +74,7 @@ public class RpcConsumerPostProcessor implements ApplicationContextAware, BeanCl
             builder.setInitMethodName("init");
             builder.addPropertyValue("interfaceClass", field.getType());
             builder.addPropertyValue("serviceVersion", annotation.serviceVersion());
-            builder.addPropertyValue("registryAddress", annotation.registryAddress());
+            builder.addPropertyValue("registryAddress", annotation.registryAddress() == null ? arkProperties.getRegistry().getAddress() : annotation.registryAddress());
             builder.addPropertyValue("timeout", annotation.timeout());
 
             BeanDefinition beanDefinition = builder.getBeanDefinition();
