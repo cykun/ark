@@ -15,28 +15,33 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
-public class RpcProvider implements InitializingBean, BeanPostProcessor {
+public class RpcProvider implements InitializingBean, DisposableBean, BeanPostProcessor {
 
     private String serverAddress;
     private final int serverPort;
     private final RegistryService registryService;
     private final Map<String, Object> rpcServiceMap = new HashMap<>();
     private final List<ServiceMeta> registeredServiceList = new LinkedList<>();
+
+    private EventLoopGroup bossGroup;
+    private EventLoopGroup workerGroup;
 
     public RpcProvider(int serverPort, RegistryService registryService) {
         this.serverPort = serverPort;
@@ -46,8 +51,8 @@ public class RpcProvider implements InitializingBean, BeanPostProcessor {
     private void startServer() throws Exception {
         this.serverAddress = InetAddress.getLocalHost().getHostAddress();
 
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup();
+        workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup, workerGroup)
@@ -57,10 +62,10 @@ public class RpcProvider implements InitializingBean, BeanPostProcessor {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) {
                             socketChannel.pipeline()
-                                    .addLast(new LoggingHandler(LogLevel.DEBUG))
-                                    .addLast(new ArkRpcEncoder())
-                                    .addLast(new ArkRpcDecoder())
-                                    .addLast(new RpcRequestHandler(rpcServiceMap));
+                                    .addLast("decoder", new ArkRpcDecoder())
+                                    .addLast("encoder", new ArkRpcEncoder())
+                                    .addLast("server-idle-handler", new IdleStateHandler(0, 0, 3000, TimeUnit.MILLISECONDS))
+                                    .addLast("handler", new RpcRequestHandler(rpcServiceMap));
                         }
                     }).childOption(ChannelOption.SO_KEEPALIVE, true);
 
@@ -114,5 +119,16 @@ public class RpcProvider implements InitializingBean, BeanPostProcessor {
             }
         }
         return bean;
+    }
+
+    public void close() throws IOException {
+        registryService.destroy();
+        bossGroup.shutdownGracefully();
+        workerGroup.shutdownGracefully();
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        close();
     }
 }

@@ -49,7 +49,7 @@ public class RpcInvokerProxy implements InvocationHandler {
         request.setParameters(args);
         protocol.setBody(request);
 
-        RpcConsumer rpcConsumer = new RpcConsumer();
+        RpcConsumer rpcConsumer = RpcConsumer.getInstance();
         RpcFuture<RpcResponse> future = new RpcFuture<>(new DefaultPromise<>(new DefaultEventLoop()), timeout);
         RpcRequestHolder.REQUEST_MAP.put(requestId, future);
         rpcConsumer.sendRequest(protocol, registryService);
